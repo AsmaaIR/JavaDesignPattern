@@ -3,12 +3,20 @@ package com.design.pattern.creational.factory.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DepartmentModel<T> {
+public class DepartmentModel {
 
 	private int id;
 	private String departmentName;
-	private List<BookModel<T>> bookList;
-	private List<StudentModel<T>> studentList;
+	private List<BookModel> bookList;
+	private List<StudentModel> studentList;
+
+	public DepartmentModel(int id, String departmentName) {
+		super();
+		this.id = id;
+		this.departmentName = departmentName;
+		this.bookList = new ArrayList<BookModel>();
+		this.studentList = new ArrayList<StudentModel>();
+	}
 
 	public int getId() {
 		return id;
@@ -26,30 +34,30 @@ public class DepartmentModel<T> {
 		this.departmentName = departmentName;
 	}
 
-	public List<BookModel<T>> getBookList() {
+	public List<BookModel> getBookList() {
 		return bookList;
 	}
 
-	public void setBookList(List<BookModel<T>> bookList) {
+	public void setBookList(List<BookModel> bookList) {
 		this.bookList = bookList;
 	}
 
-	public List<StudentModel<T>> getStudentList() {
+	public List<StudentModel> getStudentList() {
 		return studentList;
 	}
 
-	public void setStudentList(List<StudentModel<T>> studentList) {
+	public void setStudentList(List<StudentModel> studentList) {
 		this.studentList = studentList;
 	}
 
 	/**
 	 * @param bookModel
 	 */
-	public void addbook(BookModel<T> bookModel) {
+	public void addbook(BookModel bookModel) {
 
 		if (getBookList() == null || getBookList().isEmpty()) {
 
-			setBookList(new ArrayList<BookModel<T>>());
+			setBookList(new ArrayList<BookModel>());
 		}
 
 		bookModel.setDepartment(this);
@@ -59,13 +67,37 @@ public class DepartmentModel<T> {
 	/**
 	 * @param studentModel
 	 */
-	public void addStudent(StudentModel<T> studentModel) {
+	public void addStudent(StudentModel studentModel) {
 
 		if (getStudentList() == null || getStudentList().isEmpty()) {
 
-			setStudentList(new ArrayList<StudentModel<T>>());
+			setStudentList(new ArrayList<StudentModel>());
 		}
 		studentModel.setDepartment(this);
 		getStudentList().add(studentModel);
+	}
+
+	/**
+	 * @param studentModelList
+	 */
+	public void addStudents(List<StudentModel> studentModelList) {
+
+		for (StudentModel studentModel : studentModelList) {
+
+			studentModel.setDepartment(this);
+		}
+		setStudentList(studentModelList);
+	}
+
+	/**
+	 * @param bookModelList
+	 */
+	public void addBooks(List<BookModel> bookModelList) {
+
+		for (BookModel bookModel : bookModelList) {
+
+			bookModel.setDepartment(this);
+		}
+		setBookList(bookModelList);
 	}
 }

@@ -1,16 +1,15 @@
 package com.design.pattern.creational.factory.models;
 
-public class StudentModel<T> {
+public class StudentModel {
 
 	private String name;
-	private DepartmentModel<T> department;
+	private int level;
+	private DepartmentModel department;
 
-	public StudentModel(String name, DepartmentModel<T> department) {
+	public StudentModel(String name, int level) {
 		super();
 		this.name = name;
-		this.department = department;
-		System.out.println("Student Name : " + name);
-		System.out.println("department Name : " + department.getDepartmentName() + " department id : " + department.getId());
+		this.setLevel(level);
 	}
 
 	public String getName() {
@@ -21,12 +20,20 @@ public class StudentModel<T> {
 		this.name = name;
 	}
 
-	public DepartmentModel<T> getDepartment() {
+	public DepartmentModel getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(DepartmentModel<T> department) {
+	public void setDepartment(DepartmentModel department) {
 		this.department = department;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 }

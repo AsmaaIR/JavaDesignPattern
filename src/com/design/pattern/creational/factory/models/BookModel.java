@@ -1,19 +1,19 @@
 package com.design.pattern.creational.factory.models;
 
-public class BookModel<T> {
+public class BookModel {
 
 	private String bookName;
 	private String bookAuthor;
-	private DepartmentModel<T> department;
+	private DepartmentModel department;
 
-	public BookModel(String bookName, String bookAuthor, DepartmentModel<T> department) {
+	public BookModel(String bookName, String bookAuthor) {
 		super();
 		this.bookName = bookName;
 		this.bookAuthor = bookAuthor;
-		this.department = department;
-		System.out.println("bookName:  " + bookName + " bookAuthor: " + bookAuthor);
-		System.out.println(
-				"departmentName: " + department.getDepartmentName() + " department id: " + department.getId());
+//		this.department = department;
+//		System.out.println("bookName:  " + bookName + " bookAuthor: " + bookAuthor);
+//		System.out.println(
+//				"departmentName: " + department.getDepartmentName() + " department id: " + department.getId());
 	}
 
 	public String getBookName() {
@@ -32,11 +32,11 @@ public class BookModel<T> {
 		this.bookAuthor = bookAuthor;
 	}
 
-	public DepartmentModel<T> getDepartment() {
+	public DepartmentModel getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(DepartmentModel<T> department) {
+	public void setDepartment(DepartmentModel department) {
 		this.department = department;
 	}
 }
